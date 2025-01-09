@@ -6,6 +6,7 @@ class Category {
 }
 
 class HotelData {
+  final int id;
   final String title;
   final int price;
   final int rooms;
@@ -15,7 +16,8 @@ class HotelData {
   final double rating;
 
   HotelData(
-      {required this.title,
+      {required this.id,
+        required this.title,
       required this.price,
       required this.rooms,
       required this.square,
@@ -30,62 +32,68 @@ List<Category> categories = [
     category: 'Best',
     data: [
       HotelData(
+        id: 1,
           title: 'Villa Kemah Tinggi',
-          price: 920,
+          price: 1200,
           rooms: 2,
           square: 214,
-          image: ['assets/image1.png', 'assets/image1.png', 'assets/image1.png', 'assets/image1.png'],
+          image: [ 'assets/p1.jpg', 'assets/p2.jpg'],
       isLike: false,
       rating: 4.93,
       ),
       HotelData(
+        id: 2,
           title: 'Rixos Premium ',
-          price: 920,
+          price: 2500,
           rooms: 2,
           square: 214,
-          image: ['assets/image1.png', 'assets/image1.png'],
+          image: ['assets/p8.jpg', 'assets/m2.jpg', 'assets/m3.jpg'],
         isLike: false,
         rating: 4.93,),
     ],
   ),
   Category(category: 'Popular', data: [
     HotelData(
+      id: 3,
         title: 'Sheraton',
-        price: 2000,
+        price: 4200,
         rooms: 2,
         square: 214,
-        image: ['assets/image1.png', ],
+        image: ['assets/p18.jpg','assets/p3.jpg', 'assets/p10.jpg' ],
       isLike: false,
       rating: 4.93,),
   ],),
   Category(category: 'Immediat', data: [
     HotelData(
+      id: 4,
       title: 'Garden',
-      price: 300,
+      price: 1800,
       rooms: 2,
       square: 214,
-      image: ['assets/image1.png', 'assets/image1.png'],
+      image: ['assets/p15.jpg', 'assets/p20.jpg', 'assets/p16.jpg'],
       isLike: false,
       rating: 4.93,),
   ]),
   Category(category: 'New', data: [
     HotelData(
+      id: 5,
         title: 'NOVA othel',
-        price: 920,
+        price: 900,
         rooms: 2,
         square: 214,
-        image: ['assets/image1.png'],
+        image: ['assets/p6.jpg','assets/p14.jpg'],
       isLike: false,
       rating: 4.93,),
   ],
   ),
   Category(category: 'Profitable', data: [
     HotelData(
+      id: 6,
         title: 'Villa Kemah Tinggi',
-        price: 920,
+        price: 3000,
         rooms: 2,
         square: 214,
-        image: ['assets/image1.png', 'assets/image1.png', 'assets/image1.png'],
+        image: ['assets/p9.jpg', 'assets/p17.jpg',],
       isLike: false,
       rating: 4.93,),
   ]),

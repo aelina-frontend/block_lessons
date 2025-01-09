@@ -28,4 +28,12 @@ class BookingCubit extends Cubit<BookingState> {
     }
   }
 
+  void isLike(){
+    final currentState = state;
+    if(currentState is BookingSuccess){
+      final updateProduct = currentState.categories.map((item){
+        if(item.data.){}
+      });
+    }
+  }
 }
