@@ -12,7 +12,7 @@ class HotelData {
   final int rooms;
   final int square;
   final List<String> image;
-  final bool isLike;
+  bool isLike;
   final double rating;
 
   HotelData(

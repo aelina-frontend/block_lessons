@@ -14,11 +14,10 @@ final class BookingLoading extends BookingState {}
 
 final class BookingSuccess extends BookingState {
   final List<Category> categories;
-  final int listIndex;
 
-  const BookingSuccess({required this.categories, required this.listIndex});
+  const BookingSuccess({required this.categories});
   @override
-  List<Object> get props => [categories, listIndex]; //смотрит нет ли похожих данных
+  List<Object> get props => [categories]; //смотрит нет ли похожих данных
 }
 
 final class BookingError extends BookingState {

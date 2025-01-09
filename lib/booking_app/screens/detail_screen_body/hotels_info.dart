@@ -1,3 +1,4 @@
+import 'package:bloc_lessons/booking_app/data/hotel_data.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/app_colors.dart';
@@ -6,13 +7,17 @@ import '../../widgets/button_widget.dart';
 import '../../widgets/parametres_widget.dart';
 
 class HotelsInfo extends StatelessWidget {
-  const HotelsInfo({super.key});
+  final String title;
+  final int price;
+  final int rooms;
+  final int square;
+  const HotelsInfo({super.key, required this.title, required this.price, required this.rooms, required this.square,});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // const Parametres(),
+        Parametres(title: title, price: price, rooms: rooms, square: square),
         _divider(),
         _description(),
         _circleImageName(),

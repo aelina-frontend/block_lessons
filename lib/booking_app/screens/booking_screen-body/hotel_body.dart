@@ -45,12 +45,17 @@ class HotelBody extends StatelessWidget {
                 childCount: allHotels.length, (context, index) {
 
                 final data = allHotels[index];
-
+                final categoryIndex = state.categories.indexWhere((category) =>
+                    category.data.contains(data));
               return Container(
                 color: AppColors.white,
                 child: Column(
                   children: [
-                    _ImageBody(images: data.image),
+                    _ImageBody(images: data.image, isLike: data.isLike, onPressed: (){
+                      context.read<BookingCubit>().isLike(state.categories[categoryIndex].category, data.id);
+                    }, onTap: (){
+                      AppNavigation.push(context, DetailScreen(hotel: data, category: state.categories[categoryIndex].category,));
+                    },),
                     Parametres(title: data.title, price: data.price, rooms: data.rooms, square: data.square),
 
 
@@ -69,21 +74,21 @@ class HotelBody extends StatelessWidget {
 
 class _ImageBody extends StatelessWidget {
   final List<String> images;
-
-  const _ImageBody({super.key, required this.images});
+  final bool isLike;
+  final Function() onPressed;
+  final Function() onTap;
+  const _ImageBody({super.key, required this.images, required this.isLike, required this.onPressed, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 350,
       child: GestureDetector(
-        onTap: () {
-          AppNavigation.push(context, const DetailScreen());
-        },
+        onTap: onTap,
         child: Stack(
           children: [
             ImageWidget(height: 350, images: images,),
-            likeWidget(isLike: false),
+            LikeWidget(isLike: isLike, onPressed: onPressed),
             const SizedBox(height: 45,),
 
           ],
