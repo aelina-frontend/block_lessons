@@ -5,21 +5,23 @@ class Books {
   final int price;
   final String genre;
 
-  Books({this.id,
-    required this.name,
-    required this.author,
-    required this.price,
-    required this.genre});
+  Books(
+      {this.id,
+      required this.name,
+      required this.author,
+      required this.price,
+      required this.genre});
 
-  factory Books.fromJson(Map<String, dynamic> json){
-    return Books(id: json['id'],
+  factory Books.fromJson(Map<String, dynamic> json) {
+    return Books(
+        id: json['id'],
         name: json['name'],
         author: json['author'],
         price: json['price'],
         genre: json['genre']);
   }
 
-  Map<String, dynamic> toJson(){
+  Map<String, dynamic> toJson() {
     return {
       'name': name,
       'author': author,
@@ -29,4 +31,11 @@ class Books {
   }
 }
 
-List<Books> data = [Books(id: '1', name: 'rich dad and poor dad', author: 'Robert Kiyosaki', price: 300, genre: 'business')];
+List<Books> data = [
+  Books(
+      id: '1',
+      name: 'rich dad and poor dad',
+      author: 'Robert Kiyosaki',
+      price: 300,
+      genre: 'business')
+];

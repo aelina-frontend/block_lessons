@@ -1,6 +1,10 @@
 
 import 'package:bloc_lessons/books/simple_crud/book_creat_screen.dart';
 import 'package:bloc_lessons/books/simple_crud/book_data.dart';
+import 'package:bloc_lessons/books_market/cubit/market_cubit.dart';
+import 'package:bloc_lessons/books_market/cubit/show_cubit.dart';
+import 'package:bloc_lessons/books_market/screens/books_screen.dart';
+import 'package:bloc_lessons/books_market/screens/detailed_book_screen.dart';
 import 'package:bloc_lessons/hotel/cubit/booking_cubit.dart';
 import 'package:bloc_lessons/hotel/screens/booking_screen.dart';
 import 'package:bloc_lessons/hotel/screens/get_started_screen.dart';
@@ -12,6 +16,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 import 'package:device_preview/device_preview.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'hotel/data/hotel_data.dart';
 
@@ -29,16 +34,24 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (_) => BookingCubit(categories: categories)..loadHotels())
+            create: (_) => BookingCubit(categories: categories)..loadHotels()),
+        BlocProvider(create: (_) => MarketCubit()..getData()),
+        BlocProvider(
+          create: (_) => ShowCubit(),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         useInheritedMediaQuery: true,
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
-        theme: ThemeData.light(),
+        theme: ThemeData(
+          scaffoldBackgroundColor: Color(0xFFFBF8F2),
+          fontFamily: GoogleFonts.dmSerifDisplay().fontFamily,
+          appBarTheme: AppBarTheme(backgroundColor: Color(0xFFFBF8F2)),
+        ),
         darkTheme: ThemeData.dark(),
-        home: const BookData(),
+        home: const BooksScreen(),
       ),
     );
   }

@@ -83,6 +83,22 @@ class _GetDataState extends State<GetData> {
     }
   }
 
+  Future<bool> deleteData({required String id}) async {
+    try {
+      final response = await http.delete(
+        Uri.parse('https://67849c811ec630ca33a4e5d5.mockapi.io/users/$id'),
+        headers: {'Content-Type': 'application/json'},
+      );
+      if (response.statusCode == 200 || response.statusCode == 204) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -146,7 +162,11 @@ class _GetDataState extends State<GetData> {
                                       return _alertDialog(
                                           text: 'delete data',
                                           textButton: 'delete',
-                                          onPressed: () {});
+                                          onPressed: () async{
+                                            await deleteData(id: post.id!);
+                                            Navigator.pop(context);
+                                            _fetchData();
+                                          });
                                     });
                               },
                               icon: Icons.delete_outline),
